@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         message += `\n¡Espero la confirmación y el link de pago! ¡Gracias!`;
 
-        const whatsappNumber = "+5491127930336";
+        const whatsappNumber = "+549116578945";
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
 
