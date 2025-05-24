@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MilaPizza Memuno - ¡Pedí Online!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="img/logo/logo.png" alt="Logo MilaPizza Memuno">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#como-pedir">¿Cómo Pedir?</a></li>
+                <li><a href="#contacto">Hacer Pedido</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="hero">
+            <div class="hero-content">
+                <img src="opc 2.jpg" alt="Nuestra Milapizza Estrella" style="width: 80%; max-width: 400px; border-radius: 10px; margin-bottom: 20px;">
+                <h1>¡Las Milapizzas que te vuelan la cabeza!</h1>
+                <p>Milanesa, queso derretido y papas crujientes. ¡Probá la tuya!</p>
+                <a href="#menu" class="cta-button">Ver Menú</a>
+            </div>
+        </section>
+
+        <section id="menu">
+            <h2>Nuestro Menú</h2>
+            <div id="menu-container">
+                <p>Cargando menú...</p>
+            </div>
+        </section>
+
+        <section id="como-pedir">
+            <h2>¿Cómo Pedir? ¡Es Fácil!</h2>
+            <ol>
+                <li><strong>Explorá:</strong> Navegá por nuestro menú y elegí tus Milapizzas y adicionales favoritos.</li>
+                <li><strong>Agregá:</strong> Hacé clic en "Agregar" en cada producto que quieras.</li>
+                <li><strong>Revisá:</strong> Andá a la sección "Tu Pedido" para ver tu selección.</li>
+                <li><strong>Completá:</strong> Llená tus datos de contacto y entrega.</li>
+                <li><strong>Enviá:</strong> Hacé clic en "Enviar Pedido por WhatsApp".</li>
+                <li><strong>Confirmá:</strong> Recibirás en breve el valor total de tu compra con un link de pago (Mercado Pago / Billeteras Virtuales).</li>
+            </ol>
+            <p><strong>Horarios:</strong> Viernes, Sábado y Domingo de 20:00 a 00:00 hs.</p>
+        </section>
+
+        <section id="contacto">
+            <h2>Tu Pedido</h2>
+            <div id="cart-container">
+                <h4>Productos Seleccionados:</h4>
+                <ul id="cart-items">
+                    <li id="empty-cart-msg">Tu carrito está vacío.</li>
+                </ul>
+                <h4 id="cart-total">Total Estimado: $0.00</h4>
+            </div>
+
+            <form id="order-form">
+                <h3>Completá tus Datos para Enviar</h3>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="direccion">Dirección (o indicá si retirás):</label>
+                <input type="text" id="direccion" name="direccion" required>
+
+                <label for="pago">Forma de Pago Preferida:</label>
+                <input type="text" id="pago" name="pago" placeholder="Ej: Mercado Pago, Efectivo">
+
+                <label for="aclaraciones">Aclaraciones:</label>
+                <textarea id="aclaraciones" name="aclaraciones" rows="3"></textarea>
+
+                <button type="button" id="whatsapp-button" class="cta-button">Enviar Pedido por WhatsApp</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MilaPizza Memuno. Todos los derechos reservados.</p>
+        <p>Contacto WhatsApp: +54 9 11 6578-5945</p>
+    </footer>
+
+    <script src="js/menu-data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
