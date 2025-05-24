@@ -9,31 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const burger = document.querySelector('.burger');
 
-    let cart = []; // Nuestro carrito de compras
+    let cart = [];
 
-    // --- NUEVA FUNCIÓN: Guardar Carrito en Local Storage ---
     function saveCartToLocalStorage() {
-        // LocalStorage solo guarda texto, así que convertimos el array a JSON
         localStorage.setItem('milaPizzaCart', JSON.stringify(cart));
     }
 
-    // --- NUEVA FUNCIÓN: Cargar Carrito desde Local Storage ---
     function loadCartFromLocalStorage() {
         const savedCart = localStorage.getItem('milaPizzaCart');
-        if (savedCart) {
-            // Si hay algo guardado, lo convertimos de vuelta a un array
-            cart = JSON.parse(savedCart);
-        } else {
-            // Si no hay nada, nos aseguramos que el carrito esté vacío
-            cart = [];
-        }
+        cart = savedCart ? JSON.parse(savedCart) : [];
     }
 
-    // --- Cargar y Mostrar el Menú ---
     function renderMenu() {
         if (typeof menuData === 'undefined') {
-            menuContainer.innerHTML = '<p>Error: No se pudieron cargar los datos del menú. Revisa el archivo menu-data.js y la consola.</p>';
-            console.error("La variable 'menuData' no está definida. ¿Está cargado 'menu-data.js' correctamente antes que 'script.js'?");
+            menuContainer.innerHTML = '<p>Error: No se pudieron cargar los datos del menú.</p>';
+            console.error("Error: 'menuData' no está definido.");
             return;
         }
         menuContainer.innerHTML = '';
@@ -58,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Lógica del Carrito (MODIFICADA) ---
     function addToCart(itemId) {
         let foundItem = null;
         for (const category in menuData) {
@@ -73,25 +62,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 cart.push({ ...foundItem, quantity: 1 });
             }
             renderCart();
-            saveCartToLocalStorage(); // <--- GUARDAMOS AL AÑADIR
+            saveCartToLocalStorage();
+        }
+    }
+
+    function increaseQuantity(itemId) {
+        const item = cart.find(item => item.id === itemId);
+        if (item) {
+            item.quantity++;
+            renderCart();
+            saveCartToLocalStorage();
+        }
+    }
+
+    function decreaseQuantity(itemId) {
+        const item = cart.find(item => item.id === itemId);
+        if (item) {
+            item.quantity--;
+            if (item.quantity === 0) {
+                removeFromCart(itemId);
+            } else {
+                renderCart();
+                saveCartToLocalStorage();
+            }
         }
     }
 
     function removeFromCart(itemId) {
-         const itemIndex = cart.findIndex(item => item.id === itemId);
-         if (itemIndex > -1) {
-            cart[itemIndex].quantity--;
-            if (cart[itemIndex].quantity === 0) {
-                cart.splice(itemIndex, 1);
-            }
-         }
-         renderCart();
-         saveCartToLocalStorage(); // <--- GUARDAMOS AL QUITAR
+        cart = cart.filter(item => item.id !== itemId);
+        renderCart();
+        saveCartToLocalStorage();
     }
 
     function renderCart() {
         cartItemsList.innerHTML = '';
         let total = 0;
+
         if (cart.length === 0) {
             if(emptyCartMsg) emptyCartMsg.style.display = 'block';
         } else {
@@ -99,9 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.forEach(item => {
                 const li = document.createElement('li');
                 li.innerHTML = `
-                    <span>${item.quantity}x ${item.nombre}</span>
-                    <span>$${(item.precio * item.quantity).toFixed(2)}</span>
-                    <button class="remove-from-cart-btn" data-id="${item.id}" style="background:red; color:white; border:none; padding: 2px 5px; cursor:pointer; margin-left: 5px; border-radius: 3px;">X</button>
+                    <span class="item-name">${item.nombre}</span>
+                    <div class="item-controls">
+                        <button class="qty-btn decrease-qty-btn" data-id="${item.id}">-</button>
+                        <span class="item-qty">${item.quantity}</span>
+                        <button class="qty-btn increase-qty-btn" data-id="${item.id}">+</button>
+                    </div>
+                    <span class="item-price">$${(item.precio * item.quantity).toFixed(2)}</span>
+                    <button class="remove-item-btn" data-id="${item.id}">X</button>
                 `;
                 cartItemsList.appendChild(li);
                 total += item.precio * item.quantity;
@@ -110,20 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
         cartTotalElement.textContent = `Total Estimado: $${total.toFixed(2)}`;
     }
 
-    // --- Integración con WhatsApp (MODIFICADA) ---
     function sendWhatsAppOrder() {
-        // ... (resto de la función igual) ...
+        const nombre = document.getElementById('nombre').value.trim();
+        const direccion = document.getElementById('direccion').value.trim();
+        const pago = document.getElementById('pago').value.trim();
+        const aclaraciones = document.getElementById('aclaraciones').value.trim();
 
         if (cart.length === 0) {
             alert('¡Tu carrito está vacío! Agregá algo antes de pedir.');
             return;
         }
-        // ... (resto de la validación y construcción del mensaje igual) ...
-         const nombre = document.getElementById('nombre').value.trim();
-        const direccion = document.getElementById('direccion').value.trim();
-        const pago = document.getElementById('pago').value.trim();
-        const aclaraciones = document.getElementById('aclaraciones').value.trim();
-
         if (!nombre || !direccion) {
             alert('Por favor, completá tu Nombre y Dirección.');
             return;
@@ -147,27 +154,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         message += `\n¡Espero la confirmación y el link de pago! ¡Gracias!`;
 
-        const whatsappNumber = "+549116578945";
+        // ¡¡ASEGÚRATE DE QUE ESTE SEA EL NÚMERO CORRECTO!!
+        const whatsappNumber = "+5491165785945"; 
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
 
         window.open(whatsappUrl, '_blank');
 
-        // --- NUEVO: Limpiar carrito después de enviar ---
         cart = [];
         renderCart();
-        saveCartToLocalStorage(); // Guardamos el carrito vacío
-        orderForm.reset(); // Limpia los campos del formulario
+        saveCartToLocalStorage();
+        orderForm.reset();
     }
 
-    // --- Event Listeners ---
     document.body.addEventListener('click', (e) => {
-        if (e.target.classList.contains('add-to-cart-btn')) {
-            const itemId = e.target.getAttribute('data-id');
+        const target = e.target;
+        const itemId = target.getAttribute('data-id');
+
+        if (!itemId) return; // Si no hay data-id, no hacemos nada
+
+        if (target.classList.contains('add-to-cart-btn')) {
             addToCart(itemId);
-        }
-        if (e.target.classList.contains('remove-from-cart-btn')) {
-            const itemId = e.target.getAttribute('data-id');
+        } else if (target.classList.contains('increase-qty-btn')) {
+            increaseQuantity(itemId);
+        } else if (target.classList.contains('decrease-qty-btn')) {
+            decreaseQuantity(itemId);
+        } else if (target.classList.contains('remove-item-btn')) {
             removeFromCart(itemId);
         }
     });
@@ -181,10 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('nav-active');
             burger.classList.toggle('toggle');
         });
+        // Opcional: Cerrar menú al hacer clic en un link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                 navLinks.classList.remove('nav-active');
+                 burger.classList.remove('toggle');
+            });
+        });
     }
 
-    // --- Inicializar (MODIFICADO) ---
-    loadCartFromLocalStorage(); // <--- CARGAMOS AL INICIAR
+    loadCartFromLocalStorage();
     renderMenu();
-    renderCart(); // <--- MOSTRAMOS EL CARRITO CARGADO O VACÍO
+    renderCart();
 });
