@@ -28,7 +28,7 @@ const menuData = {
             "nombre": "Porción de Papas Fritas",
             "descripcion": "Crujientes y doradas, el acompañante perfecto.",
             "precio": 6000,
-            "img": "img/menu/mila_papas.png"
+            "img": "img/menu/papas.png"
         },
         {
             "id": "empanadas",
