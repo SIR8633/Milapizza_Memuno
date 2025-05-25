@@ -48,7 +48,7 @@ const menuData = {
             "id": "pancitos",
             "nombre": "Panes caseros",
             "descripcion": "Probá nuestro minipan casero!.",
-            "precio": 9000,
+            "precio": 300,
             "img": "img/menu/pancito.jpg"
         }
     ],
