@@ -19,7 +19,7 @@ const menuData = {
             "nombre": "Milapizza Napolitana",
             "descripcion": "La clásica de carne o pollo, con jamón, mozzarella, tomate fresco y orégano + anillo de papas fritas!.",
             "precio": 15000,
-            "img": "mila_napo.png"
+            "img": "mila_napo.jpg"
         }
     ],
     "Adicionales": [
