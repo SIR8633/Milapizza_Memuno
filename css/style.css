@@ -57,12 +57,12 @@ section:nth-child(even) {
     position: sticky;
     top: 0;
     z-index: 1000;
-    min-height: 70px; /* Altura mínima ajustada */
+    min-height: 90px; /* Altura mínima ajustada */
     height: auto; /* Quitamos 8vh para que sea flexible */
 }
 
 .logo img {
-    height: 60px; /* Logo más grande */
+    height: 120px; /* Logo más grande */
     vertical-align: middle; /* Mejor alineación */
 }
 
