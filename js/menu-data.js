@@ -3,21 +3,21 @@ const menuData = {
         {
             "id": "mila_carne",
             "nombre": "Milapizza Clásica (Carne)",
-            "descripcion": "Nuestra milanesa de ternera gigante con salsa de tomate, mozzarella y orégano.",
+            "descripcion": "Nuestra milanesa de ternera gigante con salsa de tomate, mozzarella y orégano + anillo de papas fritas.",
             "precio": 12000,
             "img": "img/menu/mila_carne.png"
         },
         {
             "id": "mila_pollo",
             "nombre": "Milapizza Clásica (Pollo)",
-            "descripcion": "Pechuga de pollo gigante empanada, con salsa, mozzarella.",
+            "descripcion": "Pechuga de pollo gigante empanada, con salsa, mozzarella + anillo de papas fritas.",
             "precio": 12000,
             "img": "img/menu/mila_pollo.png"
         },
         {
             "id": "mila_napo",
             "nombre": "Milapizza Napolitana",
-            "descripcion": "La clásica de carne o pollo, con jamón, mozzarella, tomate fresco y orégano.",
+            "descripcion": "La clásica de carne o pollo, con jamón, mozzarella, tomate fresco y orégano + anillo de papas fritas.",
             "precio": 15000,
             "img": "mila_napo.png"
         }
@@ -31,11 +31,11 @@ const menuData = {
             "img": "img/menu/mila_papas.png"
         },
         {
-            "id": "huevo",
-            "nombre": "Huevo Frito",
-            "descripcion": "Agregale uno (¡o dos!) a tu milapizza.",
-            "precio": 900,
-            "img": "img/menu/huevo.jpg"
+            "id": "empanadas",
+            "nombre": "Empandas (pollo)",
+            "descripcion": "Agregale uno (¡o dos!) empanadas a tu milapizza.",
+            "precio (c/u)": 900,
+            "img": "img/menu/empanada.jpg"
         },
         {
             "id": "salsa",
@@ -45,11 +45,11 @@ const menuData = {
             "img": "img/menu/salsa.jpg"
         },
         {
-            "id": "cheddar",
-            "nombre": "Baño de Cheddar",
-            "descripcion": "Un diluvio de queso cheddar fundido.",
-            "precio": 900,
-            "img": "img/menu/cheddar.jpg"
+            "id": "sandwich",
+            "nombre": "Sandwich",
+            "descripcion": "Probá mismo sabor en sandwich!.",
+            "precio": 9000,
+            "img": "img/menu/sandwich.jpg"
         }
     ],
     "Bebidas": [
