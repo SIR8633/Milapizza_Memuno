@@ -3,21 +3,21 @@ const menuData = {
         {
             "id": "mila_carne",
             "nombre": "Milapizza Clásica (Carne)",
-            "descripcion": "Nuestra milanesa de ternera gigante con salsa de tomate, mozzarella y orégano + anillo de papas fritas.",
+            "descripcion": "Nuestra milanesa de ternera gigante con salsa de tomate, mozzarella y orégano + anillo de papas fritas!.",
             "precio": 12000,
             "img": "img/menu/mila_carne.png"
         },
         {
             "id": "mila_pollo",
             "nombre": "Milapizza Clásica (Pollo)",
-            "descripcion": "Pechuga de pollo gigante empanada, con salsa, mozzarella + anillo de papas fritas.",
+            "descripcion": "Pechuga de pollo gigante empanada, con salsa, mozzarella + anillo de papas fritas!.",
             "precio": 12000,
             "img": "img/menu/mila_pollo.png"
         },
         {
             "id": "mila_napo",
             "nombre": "Milapizza Napolitana",
-            "descripcion": "La clásica de carne o pollo, con jamón, mozzarella, tomate fresco y orégano + anillo de papas fritas.",
+            "descripcion": "La clásica de carne o pollo, con jamón, mozzarella, tomate fresco y orégano + anillo de papas fritas!.",
             "precio": 15000,
             "img": "mila_napo.png"
         }
