@@ -43,6 +43,13 @@ const menuData = {
             "descripcion": "Probá mismo sabor en sandwich!.",
             "precio": 9000,
             "img": "img/menu/sandwich.jpg"
+        },
+        {
+            "id": "pancitos",
+            "nombre": "Panes caseros",
+            "descripcion": "Probá nuestro minipan casero!.",
+            "precio": 9000,
+            "img": "img/menu/pancito.jpg"
         }
     ],
     "Bebidas": [
