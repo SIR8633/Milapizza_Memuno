@@ -38,13 +38,6 @@ const menuData = {
             "img": "img/menu/empanada.jpg"
         },
         {
-            "id": "salsa",
-            "nombre": "Salsa Extra",
-            "descripcion": "Más cheddar, barbacoa, o la que te guste.",
-            "precio": 300,
-            "img": "img/menu/salsa.jpg"
-        },
-        {
             "id": "sandwich",
             "nombre": "Sandwich",
             "descripcion": "Probá mismo sabor en sandwich!.",
