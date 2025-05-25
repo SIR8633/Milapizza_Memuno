@@ -71,14 +71,18 @@
 
             <form id="order-form">
                 <h3>Completá tus Datos para Enviar</h3>
+
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                <label for="direccion">Dirección (o indicá si retirás):</label>
-                <input type="text" id="direccion" name="direccion" required>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Matías González" required>
+
+                <label for="direccion">Dirección de envío:</label> <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. El Cano 1500 4 A" required>
+
                 <label for="pago">Forma de Pago Preferida:</label>
                 <input type="text" id="pago" name="pago" placeholder="Ej: Mercado Pago, Efectivo">
+
                 <label for="aclaraciones">Aclaraciones:</label>
-                <textarea id="aclaraciones" name="aclaraciones" rows="3"></textarea>
+                <textarea id="aclaraciones" name="aclaraciones" rows="3" placeholder="Ej: Llamar al llegar, puerta verde, sin tomate..."></textarea>
+
                 <button type="button" id="whatsapp-button" class="cta-button">Enviar Pedido por WhatsApp</button>
             </form>
         </section>
