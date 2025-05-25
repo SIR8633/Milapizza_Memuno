@@ -34,7 +34,7 @@ const menuData = {
             "id": "empanadas",
             "nombre": "Empandas (pollo)",
             "descripcion": "Agregale uno (¡o dos!) empanadas a tu milapizza.",
-            "precio (c/u)": 900,
+            "precio": 900,
             "img": "img/menu/empanada.jpg"
         },
         {
