@@ -5,7 +5,7 @@ const menuData = {
             "nombre": "Milapizza Clásica (Carne)",
             "descripcion": "Nuestra milanesa de ternera gigante con salsa de tomate, mozzarella y orégano.",
             "precio": 12000,
-            "img": "img/menu/mila_carne.png"
+            "img": "../img/menu/mila_carne.png"
         },
         {
             "id": "mila_pollo",
