@@ -138,16 +138,20 @@ section:nth-child(even) {
     text-align: left;
 }
 
-.menu-category h3 {
+.menu-category { /* <-- AHORA APLICAMOS AL DIV */
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
     width: 100%;
+    margin-top: 2rem; /* Subimos el margen */
+    border-bottom: 2px solid var(--primary-color); /* La línea va aquí */
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem; /* Mantenemos el margen inferior */
+}
+
+.menu-category h3 { /* <-- El H3 solo necesita estilo de texto */
     text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
     font-size: 1.8em;
     color: var(--dark-color);
-    grid-column: 1 / -1;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 0.5rem;
+    margin-bottom: 0; /* Quitamos el margen de abajo */
 }
 
 .menu-item {
